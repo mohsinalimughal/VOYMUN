@@ -180,6 +180,170 @@
     });
   });
 
+  /* ---------- Committee details ----------
+     To update a committee, edit its entry below. */
+  var COMMITTEES = {
+    pna: {
+      abbr: "PNA",
+      name: "Pakistan National Assembly",
+      agendaTitle: "The System Has Collapsed",
+      agendaText: "Discussing the Structural Changes and Constitutional Amendment",
+      about: "The Pakistan National Assembly is the country's parliament, where national laws are proposed, debated and passed. At VOYMUN, the committee works the way the real Assembly works.",
+      inside: [
+        "You sit as a Member of Parliament.",
+        "You debate national bills and argue for or against amendments.",
+        "You pass laws by vote, just like the real Assembly."
+      ],
+      why: [
+        "Learn how Parliament really works.",
+        "Practise formal debate in a national setting.",
+        "Build persuasive speaking on issues that affect Pakistan directly."
+      ]
+    },
+    fcc: {
+      abbr: "FCC",
+      name: "Federal Constitutional Court of Pakistan",
+      agendaTitle: "",
+      agendaText: "A petition has been filed in the Federal Constitutional Court to challenge the Governor's Rule and Emergency in Khyber Pakhtunkhwa.",
+      about: "The Federal Constitutional Court is Pakistan's new apex constitutional court. It decides constitutional questions and landmark legal cases.",
+      inside: [
+        "You act as Petitioner, Respondent or Counsel.",
+        "You build a case and argue it before the court.",
+        "You work through constitutional questions with judicial reasoning."
+      ],
+      why: [
+        "Develop legal reasoning and case-building skills.",
+        "Practise courtroom-style speaking.",
+        "A strong fit if you are interested in law or the Constitution."
+      ]
+    },
+    unsc: {
+      abbr: "UNSC",
+      name: "United Nations Security Council",
+      agendaTitle: "Beyond Borders",
+      agendaText: "Preventing the Regionalisation of the Sudanese Civil War and Addressing External Involvement in the Conflict",
+      about: "The Security Council is the UN body responsible for international peace and security.",
+      inside: [
+        "You represent a country on the Council.",
+        "You respond to live crises, with updates during the session.",
+        "You negotiate with other members to reach a resolution."
+      ],
+      why: [
+        "Build crisis handling and quick judgement.",
+        "Sharpen your negotiation skills under pressure.",
+        "Experience high-stakes global diplomacy."
+      ]
+    },
+    unhrc: {
+      abbr: "UNHRC",
+      name: "United Nations Human Rights Council",
+      agendaTitle: "Breaking Point",
+      agendaText: "Enforcing Accountability for War Crimes and Attacks on Civilian and Aid Infrastructure",
+      about: "The Human Rights Council is the UN body that addresses human rights violations and works to protect fundamental freedoms around the world.",
+      inside: [
+        "You represent a country on the Council.",
+        "You examine real human rights violations.",
+        "You debate how the world should respond and hold those responsible to account."
+      ],
+      why: [
+        "Develop critical thinking on real-world issues.",
+        "Learn to disagree with respect.",
+        "Speak up on accountability and the protection of civilians."
+      ]
+    },
+    unwomen: {
+      abbr: "UN Women",
+      name: "Gender Equality & Empowerment of Women",
+      agendaTitle: "Shadow Markets",
+      agendaText: "Combating Human Trafficking, Forced Marriages, and Modern Slavery Among Displaced Women",
+      about: "UN Women is the UN entity for gender equality and the empowerment of women.",
+      inside: [
+        "You represent a country in the committee.",
+        "You debate policy on protection, work and education.",
+        "You draft resolutions with other delegates."
+      ],
+      why: [
+        "Build policy research and writing skills.",
+        "Work on issues of gender equality and protection.",
+        "Learn to turn ideas into a written resolution."
+      ]
+    },
+    specpol: {
+      abbr: "SPECPOL",
+      name: "Special Political and Decolonization Committee",
+      agendaTitle: "",
+      agendaText: "Addressing the border dispute and their effects as a critical escalation point in the Israel–Palestine crisis (both the West Bank and Gaza).",
+      about: "SPECPOL is the UN General Assembly's Fourth Committee. It takes up decolonisation, self-determination and other sensitive political questions.",
+      inside: [
+        "You represent a country in the General Assembly committee.",
+        "You take up contested political and territorial questions.",
+        "You negotiate with other delegates towards a resolution."
+      ],
+      why: [
+        "Build historical research skills.",
+        "Learn to handle contested issues with care.",
+        "Practise negotiation on some of the world's hardest questions."
+      ]
+    }
+  };
+
+  var modal = document.getElementById("committeeModal");
+  var lastTrigger = null;
+
+  function fillList(id, items) {
+    var ul = document.getElementById(id);
+    ul.innerHTML = "";
+    items.forEach(function (t) {
+      var li = document.createElement("li");
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+  }
+
+  function openCommittee(key, trigger) {
+    var c = COMMITTEES[key];
+    if (!c || !modal) return;
+    lastTrigger = trigger || null;
+    document.getElementById("cmSeal").src = "images/seal-" + key + ".jpg";
+    document.getElementById("cmSeal").alt = c.abbr + " committee seal";
+    document.getElementById("cmAbbr").textContent = c.abbr;
+    document.getElementById("cmTitle").textContent = c.name;
+    document.getElementById("cmAgendaTitle").textContent = c.agendaTitle;
+    document.getElementById("cmAgendaText").textContent = c.agendaText;
+    document.getElementById("cmAbout").textContent = c.about;
+    fillList("cmInside", c.inside);
+    fillList("cmWhy", c.why);
+    if (typeof modal.showModal === "function") modal.showModal();
+    else modal.setAttribute("open", "");
+    document.body.classList.add("modal-open");
+    modal.querySelector(".cmodal__inner").scrollTop = 0;
+    document.getElementById("cmClose").focus();
+  }
+
+  function closeCommittee() {
+    if (!modal) return;
+    if (typeof modal.close === "function") modal.close();
+    else modal.removeAttribute("open");
+  }
+
+  if (modal) {
+    modal.addEventListener("close", function () {
+      document.body.classList.remove("modal-open");
+      if (lastTrigger) lastTrigger.focus();
+    });
+    document.getElementById("cmClose").addEventListener("click", closeCommittee);
+    /* Click on the dark backdrop closes the dialog */
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeCommittee();
+    });
+  }
+
+  document.querySelectorAll(".committee[data-committee]").forEach(function (card) {
+    var key = card.getAttribute("data-committee");
+    var btn = card.querySelector(".committee__more");
+    card.addEventListener("click", function () { openCommittee(key, btn || card); });
+  });
+
   /* ---------- Smooth anchor offset for sticky nav ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener("click", function (e) {
