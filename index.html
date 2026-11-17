@@ -131,9 +131,9 @@
       <p class="eyebrow animate">About VOYMUN</p>
       <h2 class="h2 animate">More than a conference. <em>A platform for every voice.</em></h2>
       <div class="about__text animate">
-        <p>Voice of Youth Model United Nations believes every student deserves an opportunity to express their ideas, develop leadership skills, and make their voice heard.</p>
-        <p>Our mission is to make Model United Nations accessible to everyone, especially talented and passionate students who may not have the financial means to attend expensive conferences.</p>
-        <p>Whether this is your first MUN or you are an experienced delegate, VOYMUN provides a platform to learn, collaborate, negotiate, and lead.</p>
+        <p>VOYMUN is built for the majority. Model United Nations in Karachi has mostly been open to students who can pay high fees. We started VOYMUN so that good public speaking, research and negotiation do not depend on which school you go to or what your family can afford.</p>
+        <p>We are not here to earn money. We keep our delegate fee low so that middle-class students, the majority we built VOYMUN for, get the same chance as anyone else.</p>
+        <p>First-timers are at the heart of VOYMUN. If you have never been to a MUN, never spoken in a committee, or never thought it was for you, this conference was made for you.</p>
       </div>
     </div>
     <figure class="about__figure animate">
@@ -147,10 +147,16 @@
 
   <div class="container">
     <div class="stats animate">
-      <blockquote class="stats__mission">
-        <p>"To give every student the confidence, knowledge and ability to use their voice with purpose."</p>
-        <cite>— The VOYMUN mission</cite>
-      </blockquote>
+      <div class="stats__mv">
+        <div class="mv">
+          <p class="mv__label">Our Mission</p>
+          <p class="mv__text">To empower middle-class students and first-time delegates with the confidence, knowledge and ability to use their voice with purpose, at a fee they can afford.</p>
+        </div>
+        <div class="mv">
+          <p class="mv__label">Our Vision</p>
+          <p class="mv__text">A Karachi where every student, whatever their school or background, gets a seat at the table and a chance to be heard.</p>
+        </div>
+      </div>
       <dl class="stats__grid">
         <div class="stat"><dt>Delegates expected</dt><dd>500+</dd></div>
         <div class="stat"><dt>Committees</dt><dd>6</dd></div>
@@ -190,11 +196,11 @@
     <header class="section-head">
       <p class="eyebrow eyebrow--light animate">Committees</p>
       <h2 class="h2 h2--light animate">Six committees. <em>Countless perspectives.</em></h2>
-      <p class="section-head__sub animate">From Pakistan's parliament to the Security Council, pick the room where your voice fits best.</p>
+      <p class="section-head__sub animate">From Pakistan's parliament to the Security Council, pick the room where your voice fits best. Tap any committee to see its agenda and what you will do there.</p>
     </header>
 
     <div class="committee-grid">
-      <article class="committee animate" style="--i:0">
+      <article class="committee animate" style="--i:0" data-committee="pna">
         <img class="committee__seal" src="images/seal-pna.jpg" alt="PNA committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">PNA</p>
         <h3 class="committee__name">Pakistan National Assembly</h3>
@@ -204,9 +210,10 @@
           <p class="committee__agenda-title">The System Has Collapsed</p>
           <p class="committee__agenda-text">Discussing the Structural Changes and Constitutional Amendment</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="committee animate" style="--i:1">
+      <article class="committee animate" style="--i:1" data-committee="fcc">
         <img class="committee__seal" src="images/seal-fcc.jpg" alt="FCC committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">FCC</p>
         <h3 class="committee__name">Federal Constitutional Court of Pakistan</h3>
@@ -215,9 +222,10 @@
           <span class="committee__agenda-label">Agenda</span>
           <p class="committee__agenda-text">A petition has been filed in the Federal Constitutional Court to challenge the Governor's Rule and Emergency in Khyber Pakhtunkhwa</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="committee animate" style="--i:2">
+      <article class="committee animate" style="--i:2" data-committee="unsc">
         <img class="committee__seal" src="images/seal-unsc.jpg" alt="UNSC committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">UNSC</p>
         <h3 class="committee__name">United Nations Security Council</h3>
@@ -227,9 +235,10 @@
           <p class="committee__agenda-title">Beyond Borders</p>
           <p class="committee__agenda-text">Preventing the Regionalisation of the Sudanese Civil War and Addressing External Involvement in the Conflict</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="committee animate" style="--i:3">
+      <article class="committee animate" style="--i:3" data-committee="unhrc">
         <img class="committee__seal" src="images/seal-unhrc.jpg" alt="UNHRC committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">UNHRC</p>
         <h3 class="committee__name">United Nations Human Rights Council</h3>
@@ -239,9 +248,10 @@
           <p class="committee__agenda-title">Breaking Point</p>
           <p class="committee__agenda-text">Enforcing Accountability for War Crimes and Attacks on Civilian and Aid Infrastructure</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="committee animate" style="--i:4">
+      <article class="committee animate" style="--i:4" data-committee="unwomen">
         <img class="committee__seal" src="images/seal-unwomen.jpg" alt="UN Women committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">UN Women</p>
         <h3 class="committee__name">Gender Equality &amp; Empowerment of Women</h3>
@@ -251,9 +261,10 @@
           <p class="committee__agenda-title">Shadow Markets</p>
           <p class="committee__agenda-text">Combating Human Trafficking, Forced Marriages, and Modern Slavery Among Displaced Women</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="committee animate" style="--i:5">
+      <article class="committee animate" style="--i:5" data-committee="specpol">
         <img class="committee__seal" src="images/seal-specpol.jpg" alt="SPECPOL committee seal" loading="lazy" width="400" height="400">
         <p class="committee__abbr">SPECPOL</p>
         <h3 class="committee__name">Special Political and Decolonization Committee</h3>
@@ -262,6 +273,7 @@
           <span class="committee__agenda-label">Agenda</span>
           <p class="committee__agenda-text">Addressing the border dispute and their effects as a critical escalation point in the Israel–Palestine crisis (both the West Bank and Gaza)</p>
         </div>
+        <button class="committee__more" type="button" aria-haspopup="dialog">View committee details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
     </div>
   </div>
@@ -593,6 +605,49 @@
     <a href="#home" class="footer__top">Back to top ↑</a>
   </div>
 </footer>
+
+<!-- ============ COMMITTEE DETAIL DIALOG ============
+     Content for each committee lives in js/main.js (COMMITTEES). Edit it there. -->
+<dialog class="cmodal" id="committeeModal" aria-labelledby="cmTitle">
+  <div class="cmodal__inner">
+    <button class="cmodal__close" type="button" id="cmClose" aria-label="Close committee details">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <header class="cmodal__head">
+      <img class="cmodal__seal" id="cmSeal" src="images/seal-pna.jpg" alt="" width="400" height="400">
+      <div>
+        <p class="cmodal__abbr" id="cmAbbr">PNA</p>
+        <h2 class="cmodal__title" id="cmTitle">Pakistan National Assembly</h2>
+      </div>
+    </header>
+
+    <section class="cmodal__agenda">
+      <p class="cmodal__label">Agenda</p>
+      <p class="cmodal__agenda-title" id="cmAgendaTitle"></p>
+      <p class="cmodal__agenda-text" id="cmAgendaText"></p>
+    </section>
+
+    <section class="cmodal__block">
+      <h3 class="cmodal__h">About the committee</h3>
+      <p id="cmAbout"></p>
+    </section>
+
+    <section class="cmodal__block">
+      <h3 class="cmodal__h">In this committee</h3>
+      <ul class="cmodal__list" id="cmInside"></ul>
+    </section>
+
+    <section class="cmodal__block">
+      <h3 class="cmodal__h">Why choose this committee</h3>
+      <ul class="cmodal__list cmodal__list--check" id="cmWhy"></ul>
+    </section>
+
+    <div class="cmodal__ctas">
+      <a class="btn btn--gold js-form-individual" href="https://docs.google.com/forms/d/e/1FAIpQLSf5WvLwNI2XVEGC6vnwrrIXH3Y15jSZ0cP4kcsX9cQ2NVSskg/viewform?usp=header" target="_blank" rel="noopener">Register as Individual</a>
+      <a class="btn btn--outline js-form-delegation" href="https://docs.google.com/forms/d/e/1FAIpQLSfLnPKlMBdTQ5PPubk7Le9KL5aUBj2UdO5ytJQ4t_GpiYRwPw/viewform?usp=header" target="_blank" rel="noopener">Register as Delegation</a>
+    </div>
+  </div>
+</dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <!--@@BODY_END@@-->
