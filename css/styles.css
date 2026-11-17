@@ -302,12 +302,10 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
   margin-bottom: clamp(32px, 5vw, 52px);
   box-shadow: var(--shadow-lg);
 }
-.stats__mission p {
-  font-family: var(--font-display); font-style: italic;
-  font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.45;
-  color: var(--white); text-wrap: balance;
-}
-.stats__mission cite { display: block; margin-top: 12px; font-style: normal; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.stats__mv { display: grid; gap: 22px; }
+.mv { border-left: 3px solid var(--gold); padding-left: 18px; }
+.mv__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.mv__text { font-family: var(--font-display); font-size: clamp(1.05rem, 1.8vw, 1.28rem); line-height: 1.5; color: var(--white); text-wrap: pretty; }
 .stats__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .stat {
   display: flex; flex-direction: column-reverse; gap: 2px;
@@ -486,6 +484,76 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
 .event-item svg { width: 30px; height: 30px; margin-inline: auto; margin-bottom: 14px; fill: none; stroke: var(--gold); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; display: block; }
 .event-item__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 6px; }
 .event-item__value { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; color: var(--white); text-wrap: balance; }
+
+/* Committee card: clickable */
+.committee { cursor: pointer; }
+.committee__more {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 16px; padding: 0;
+  font-size: 0.86rem; font-weight: 600; color: var(--gold-soft);
+  transition: color 0.25s, gap 0.25s var(--ease);
+}
+.committee__more svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.committee:hover .committee__more { color: var(--gold); gap: 12px; }
+
+/* ---------- Committee detail dialog ---------- */
+.cmodal {
+  margin: auto; padding: 0; border: 0;
+  width: min(720px, calc(100% - 24px));
+  max-height: calc(100dvh - 32px);
+  border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(165deg, var(--navy) 0%, #13284a 100%);
+  color: var(--white);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  border: 1px solid var(--line-dark);
+  overflow: hidden;
+}
+.cmodal[open] { display: flex; animation: cmIn 0.4s var(--ease); }
+.cmodal::backdrop { background: rgba(6, 12, 24, 0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+@keyframes cmIn { from { opacity: 0; transform: translateY(24px) scale(0.98); } to { opacity: 1; transform: none; } }
+.cmodal__inner { position: relative; overflow-y: auto; padding: clamp(24px, 4vw, 40px); display: grid; gap: 22px; width: 100%; overscroll-behavior: contain; }
+.cmodal__close {
+  position: absolute; top: 14px; right: 14px;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  transition: background 0.25s, transform 0.25s var(--ease);
+}
+.cmodal__close:hover { background: rgba(214,173,96,0.2); transform: rotate(90deg); }
+.cmodal__close svg { width: 18px; height: 18px; fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; }
+.cmodal__head { display: flex; align-items: center; gap: 18px; padding-right: 44px; }
+.cmodal__seal { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex: none; border: 1.5px solid var(--line-dark); box-shadow: 0 8px 22px rgba(0,0,0,0.4); }
+.cmodal__abbr { font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; color: var(--gold); line-height: 1.05; }
+.cmodal__title { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-top: 4px; text-wrap: balance; }
+.cmodal__agenda {
+  background: rgba(214,173,96,0.08);
+  border: 1px solid var(--line-dark); border-left: 3px solid var(--gold);
+  border-radius: 12px; padding: 18px 20px;
+}
+.cmodal__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.cmodal__agenda-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--gold-soft); margin-bottom: 4px; }
+.cmodal__agenda-title:empty { display: none; }
+.cmodal__agenda-text { font-size: 1rem; line-height: 1.55; color: rgba(255,255,255,0.88); }
+.cmodal__h { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+.cmodal__h::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+.cmodal__block p { color: rgba(255,255,255,0.8); font-size: 0.97rem; }
+.cmodal__list { display: grid; gap: 9px; }
+.cmodal__list li { position: relative; padding-left: 22px; color: rgba(255,255,255,0.82); font-size: 0.95rem; line-height: 1.5; }
+.cmodal__list li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.cmodal__list--check li::before { width: 12px; height: 7px; border-radius: 0; background: none; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg); top: 0.42em; left: 0; }
+.cmodal__ctas { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px; }
+.btn--outline { color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+.btn--outline:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--gold-soft); }
+body.modal-open { overflow: hidden; }
+@media (max-width: 560px) {
+  .cmodal { width: 100%; max-height: 92dvh; margin: auto 0 0; border-radius: 20px 20px 0 0; }
+  .cmodal[open] { animation-name: cmUp; }
+  .cmodal__inner { padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+  .cmodal__seal { width: 64px; height: 64px; }
+  .cmodal__abbr { font-size: 1.55rem; }
+  .cmodal__ctas .btn { width: 100%; }
+}
+@keyframes cmUp { from { transform: translateY(100%); } to { transform: none; } }
 
 /* ---------- Team ---------- */
 .team { background: var(--white); }
